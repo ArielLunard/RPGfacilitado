@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Monstro {
     private String nome;
     private String atq;
@@ -11,6 +14,7 @@ public class Monstro {
     private int sab; //Sabedoria
     private int car; //Carisma
     private String CimAtaq;
+    private List<Habilidade> habilidades; //Habiliades
 
 
     public Monstro(String nome, String atq, int ca, int pv, int dsc, int frc, int des, int con, int itl, int sab, int car) {
@@ -19,30 +23,21 @@ public class Monstro {
         this.ca   = ca;  //Classe de Armadura
         this.pv   = pv;  //Pontos de Pv
         this.dsc  = dsc; //Desclocamento
-        this.frc  = frc; //Força
+        this.frc  = frc; //ForçaH
         this.des  = des; //Destreza
         this.con  = con; //Constituição
         this.itl  = itl; //Inteligencia
         this.sab  = sab; //Sabedoria
         this.car  = car; //Carisma
+        this.habilidades = new ArrayList<>(); //Habiliades
     }
 
     public void receberDano(int dano) {
         pv = Math.max(0, pv - dano);
     }
 
-    public void ataque_1(Monstro alvo) {
-        int atq_dano_1;
-        int atq_bonus_1;
-
-        atq_bonus_1 = new Modificador(this.des).getModificador();
-        atq_dano_1 = Rolagen.RDado(this.atq)+atq_bonus_1;
-
-        if(atq_dano_1 < 0){
-            atq_dano_1 = 0;
-        }
-        alvo.receberDano(atq_dano_1);
-        System.out.println(this.nome + " ataca " + alvo.nome + " causando " + this.atq + "+"+atq_bonus_1+"=" + atq_dano_1 + "  de dano!");
+    public void adicionarHabilidade(Habilidade habilidade) {
+        habilidades.add(habilidade);
     }
 
     public String getNome() { return nome; }

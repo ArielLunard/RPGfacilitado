@@ -1,17 +1,18 @@
 public class Main {
     public static void main(String[] args) {
-        Monstro goblin = Bestiario.goblin;
-        Monstro aarakocra = Bestiario.aarakocra;
+        Bestiario bestiario = new Bestiario();
+
+        Monstro goblin1 = bestiario.getGoblin();
+        Monstro aarakocra1 = bestiario.getAarakocra();
 
         System.out.println("=== Início do combate ===");
-        System.out.println(goblin);
-        System.out.println(aarakocra);
+        System.out.println(goblin1);
+        System.out.println(aarakocra1);
 
-        // Goblin ataca Aarakocra
         System.out.println("=== Ataques ===");
-        String resultado = Ataques.goblin_cimitarra(goblin, aarakocra);
+        String resultado = usar.goblin_cimitarra(goblin1, aarakocra1);
         System.out.println(resultado);
 
-        System.out.println("PV de " + aarakocra.getNome() + ": " + aarakocra.getPv());
+        System.out.println("PV de " + aarakocra1.getNome() + ": " + aarakocra1.getPv());
     }
 }
